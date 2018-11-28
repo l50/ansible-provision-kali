@@ -1,0 +1,7 @@
+---
+- name: Configure Kali
+  hosts: all
+
+  roles:
+    - packages
+    - docker

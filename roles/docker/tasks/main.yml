@@ -1,0 +1,8 @@
+---
+- name: Configure docker to start on boot
+  shell: systemctl enable docker
+
+- name: Start docker service
+  service:
+    name: docker
+    state: started

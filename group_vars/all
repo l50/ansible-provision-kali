@@ -1,0 +1,3 @@
+---
+# Packages to install
+packages: ['docker-ce','htop','tmux','tree']

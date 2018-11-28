@@ -1,0 +1,31 @@
+---
+- name: Add docker gpg key
+  shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  become: true
+
+- name: Configure docker apt repo
+  shell: echo 'deb https://download.docker.com/linux/debian stretch stable' > /etc/apt/sources.list.d/docker.list
+  become: true
+
+- name: Upgrade all packages
+  apt:
+    upgrade: full
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: Remove useless packages from the cache
+  apt:
+    autoclean: yes
+  become: true
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+  become: true
+
+- name: Install apt packages
+  apt:
+    name: "{{ packages }}"
+    state: present
+  become: true
