@@ -5,3 +5,7 @@
   roles:
     - packages
     - docker
+    - space_vim
+    - oh_my_zsh
+    - dot_files
+    - common

@@ -1,0 +1,18 @@
+---
+- name: Clone oh-my-zsh repo
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+  register: cloning
+
+- name: Creating new $HOME/.zshrc
+  copy:
+    src: "{{ ansible_env.HOME }}/.oh-my-zsh/templates/zshrc.zsh-template"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+  when: cloning is success
+
+- name: Set zsh as default shell for the current user
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+  become: true

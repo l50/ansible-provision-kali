@@ -1,0 +1,37 @@
+---
+- name: Initialize users list
+  set_fact:
+    users: ["root"]
+
+- name: Check if ec2-user exists (this would indicate we're on an ec2 instance)
+  shell: grep "^ec2-user:" /etc/passwd
+  ignore_errors: yes
+  register: user_exist
+
+- name: Add ec2-user to users list if we're on an ec2 instance
+  set_fact:
+    users: "{{ users }} + [ 'ec2-user' ]"
+  when: user_exist.rc == 0
+
+- name: Clone oh-my-zsh repo
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: "/home/{{ item }}/.oh-my-zsh"
+  register: cloning
+  loop: "{{ users }}"
+
+- name: Creating new ~/.zshrc
+  copy:
+    src: "/home/{{ item }}/.oh-my-zsh/templates/zshrc.zsh-template"
+    dest: "/home/{{ item }}/.zshrc"
+  when: cloning|success
+  loop: "{{ users }}"
+  
+- name: Set zsh as default shell
+  user: 
+    name: "{{ item }}" 
+    shell: /bin/zsh
+  loop: "{{ users }}"
+  
+  #- name: Install oh-my-zsh
+  #shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

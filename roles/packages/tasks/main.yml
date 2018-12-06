@@ -1,6 +1,8 @@
 ---
 - name: Add docker gpg key
-  shell: curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
   become: true
 
 - name: Configure docker apt repo

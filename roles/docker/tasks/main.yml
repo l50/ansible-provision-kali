@@ -1,8 +1,12 @@
 ---
 - name: Configure docker to start on boot
   shell: systemctl enable docker
+  become: true
+  become_user: root
 
 - name: Start docker service
   service:
     name: docker
     state: started
+  become: true
+  become_user: root

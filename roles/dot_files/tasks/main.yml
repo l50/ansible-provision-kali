@@ -1,0 +1,17 @@
+---
+- name: Clone dotfiles repo
+  git:
+    repo: git://github.com/l50/dotfiles.git
+    dest: "{{ ansible_env.HOME }}/dotfiles"
+
+- name: Install dotfiles
+  shell:
+    cmd: "bash {{ ansible_env.HOME }}/dotfiles/installDotFiles.sh"
+    chdir: "{{ ansible_env.HOME }}/dotfiles/"
+
+- name: Routinely update dot-files
+  cron:
+    name: 'Update dotfiles every Sunday at 01:00'
+    minute: '10'
+    hour: '17'
+    job: "cd {{ ansible_env.HOME }}/dotfiles && bash installDotFiles.sh"

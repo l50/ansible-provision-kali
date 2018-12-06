@@ -1,0 +1,6 @@
+---
+- name: Routinely run ansible to keep everything in place and up-to-date
+  cron:
+    name: 'Run ansible once an hour'
+    minute: '0'
+    job: "ansible-playbook {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali/site.yml"
