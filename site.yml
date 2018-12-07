@@ -1,8 +1,20 @@
 ---
 - name: Configure Kali
   hosts: all
+  vars:
+    logrotate_scripts:
+      - name: ansible
+        path: "/var/log/ansible.log"
+        options:
+          - daily
+          - missingok
+          - rotate 7
+          - maxage 7
+          - dateext
+          - dateyesterday
 
   roles:
+    - nickhammond.logrotate
     - packages
     - docker
     - space_vim
