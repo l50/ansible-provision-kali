@@ -15,6 +15,7 @@
 
   roles:
     - nickhammond.logrotate
+    - cmprescott.chrome
     - packages
     - docker
     - space_vim

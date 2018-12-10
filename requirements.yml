@@ -1,1 +1,5 @@
+# Install logrotate
 - src: nickhammond.logrotate
+
+# Install Chrome
+- src: cmprescott.chrome
