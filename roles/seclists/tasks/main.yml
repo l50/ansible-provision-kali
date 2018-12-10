@@ -1,0 +1,5 @@
+---
+- name: Clone SecLists repo
+  git:
+    repo: https://github.com/danielmiessler/SecLists/
+    dest: "{{ ansible_env.HOME }}/SecLists"
