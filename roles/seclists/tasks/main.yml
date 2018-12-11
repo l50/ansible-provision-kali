@@ -3,3 +3,10 @@
   git:
     repo: https://github.com/danielmiessler/SecLists/
     dest: "{{ ansible_env.HOME }}/SecLists"
+
+- name: Keep SecLists updated
+  cron:
+    name: 'Update SecLists every Sunday at 07:00PM'
+    minute: '10'
+    hour: '19'
+    job: "cd {{ ansible_env.HOME }}/SecLists && git pull origin master"
