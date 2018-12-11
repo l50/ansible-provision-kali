@@ -1,4 +1,5 @@
 ---
+# Loosely based on: https://github.com/debops-contrib/ansible-x2go_server
 - name: Get X2Go APT GPG key
   apt_key:
     id: E1F958385BFE2B6E
