@@ -12,9 +12,9 @@ This playbook does the following:
 - Install and configure logrotate for ansible logs
 - Create cronjobs to automatically update my dotfile configuration and run ansible
 - Add SecLists
+- Add X2Go Server
 
 To pick and choose between any of these, simply comment out lines you're not interested in having in site.yml
 
 # TODO:
-- Add x2go
 - Add auto install curl command
