@@ -1,4 +1,5 @@
 # ansible-provision-kali
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://github.com/l50/ansible-provision-kali/blob/master/LICENSE)
 Used to configure a base Kali machine to my specifications
 
 This playbook does the following:
@@ -15,6 +16,3 @@ This playbook does the following:
 - Add X2Go Server
 
 To pick and choose between any of these, simply comment out lines you're not interested in having in site.yml
-
-# TODO:
-- Add auto install curl command
