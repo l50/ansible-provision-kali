@@ -11,7 +11,7 @@
 
 - name: Routinely update dot-files
   cron:
-    name: 'Update dotfiles every Sunday at 05:00'
+    name: 'Update dotfiles every Sunday at 05:00PM'
     minute: '10'
     hour: '17'
     job: "cd {{ ansible_env.HOME }}/dotfiles && bash installDotFiles.sh"
