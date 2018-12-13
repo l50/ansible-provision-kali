@@ -7,6 +7,7 @@
 - name: Keep SecLists updated
   cron:
     name: 'Update SecLists every Sunday at 07:00PM'
-    minute: '10'
-    hour: '19'
+    minute: 0
+    hour: 19
+    weekday: 0
     job: "cd {{ ansible_env.HOME }}/SecLists && git pull origin master"

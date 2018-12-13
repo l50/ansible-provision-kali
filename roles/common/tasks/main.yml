@@ -4,3 +4,12 @@
     name: 'Run ansible once an hour'
     minute: '0'
     job: "ansible-playbook {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali/site.yml"
+
+
+- name: Routinely check for updates for the ansible playbook
+  cron:
+    name: 'Check for playbook updates every Saturday at 05:00PM'
+    minute: 0
+    hour: 17
+    weekday: 6
+    job: "cd {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali && git pull origin master &> /dev/null"
