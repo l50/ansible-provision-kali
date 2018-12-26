@@ -1,3 +1,18 @@
 ---
 - name: Install SpaceVim
   shell: curl -sLf https://spacevim.org/install.sh | bash
+
+- name: Add vim-terraform custom vim plugin
+  blockinfile:
+    path: $HOME/.SpaceVim.d/init.toml
+    insertafter: EOF
+    content: |
+      [[custom_plugins]]
+      name = 'hashivim/vim-terraform'
+      merged = 0
+
+- name: Add autoformat terraform on save to vimrc 
+  lineinfile:
+    path: $HOME/.SpaceVim/vimrc
+    insertafter: EOF
+    line: 'let g:terraform_fmt_on_save=1'
