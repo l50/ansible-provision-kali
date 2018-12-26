@@ -1,3 +1,9 @@
 ---
 # Packages to install
 packages: ['aptitude', 'colordiff', 'docker-ce', 'ftp', 'strace', 'htop', 'tmux', 'tree', 'zsh']
+
+# Custom vim plugins
+custom_vim_plugins : |
+      [[custom_plugins]]
+      name = 'hashivim/vim-terraform'
+      merged = 0
