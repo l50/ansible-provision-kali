@@ -9,7 +9,7 @@ This playbook does the following:
 - Install Chrome
 - Install various packages (complete list is in group_vars/all)
 - Install SpaceVim (https://github.com/SpaceVim/SpaceVim)
-- Install specified vim plugins
+- Install specified vim plugins (complete list is in group_vars/all)
 - Install Z shell (https://github.com/robbyrussell/oh-my-zsh)
 - Install my dotfiles and their associated dependencies (https://github.com/l50/dotfiles)
 - Install and configure logrotate for ansible logs
