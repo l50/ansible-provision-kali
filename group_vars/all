@@ -7,3 +7,7 @@ custom_vim_plugins : |
       [[custom_plugins]]
       name = 'hashivim/vim-terraform'
       merged = 0
+      
+      [[custom_plugins]]
+      name = 'hashivim/vim-vagrant'
+      merged = 0
