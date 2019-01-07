@@ -15,3 +15,7 @@ custom_vim_plugins : |
       [[custom_plugins]]
       name = 'puppetlabs/puppet-syntax-vim'
       merged = 0
+
+      [[custom_plugins]]
+      name = 'fatih/vim-go'
+      merged = 0
