@@ -2,7 +2,7 @@
 - name: Routinely run ansible to keep everything in place and up-to-date
   cron:
     name: 'Run ansible once an hour'
-    minute: '0'
+    minute: 0
     job: "ansible-playbook {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali/site.yml"
 
 
@@ -12,4 +12,11 @@
     minute: 0
     hour: 17
     weekday: 6
+    job: "cd {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali && git pull origin master &> /dev/null"
+
+- name: Clean up after docker daily
+  cron:
+    name: 'Daily docker clean up'
+    minute: 0
+    hour: 3
     job: "cd {{ ansible_env.HOME }}/.ansible/Workspace/ansible-provision-kali && git pull origin master &> /dev/null"
